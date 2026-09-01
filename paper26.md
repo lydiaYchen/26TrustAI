@@ -54,6 +54,17 @@
     (ii) Investigate B3IT's effectiveness for implementation changes meant to optimize serving or reduce cost. Potential aspects to consider include changes to the tokenizer or decoding configuration, inference engine, and routing (in an endpoint that does not always serve a single model, but a set of models based on some criteria).
 
     (iii) Try to improve B3IT's capabilities by actively searching for better border inputs instead of brute-force probing, optimizing for border inputs that provide reliable signals across many perturbation types, or dynamically decreasing the number of observations for sample detection to reduce cost.
+
+- **Supervisor** Roberto
+- **Paper :** Watermarking Diffusion Language Models
+
+  - 👨‍🏫: ⭐⭐
+  - 🖥️: ⭐
+  
+  - **Link :** [Paper](https://proceedings.iclr.cc/paper_files/paper/2026/file/a30d1f9de116aa3184e66a3e9d96b69d-Paper-Conference.pdf) | [GitHub](https://github.com/eth-sri/diffusion-lm-watermark)
+  - **Brief description :** Watermarking is a set of techniques that enable tracing the origin of synthetic data. The paper extend a  watermarking scheme vastly used for LLMs to diffusion language models. The watermarking scheme modifies the sampling behavior of the model to follow a pattern, so that such pattern can be verified on the data. The watermarked text should be of similar quality to the non-watermarked reference, it should be verifiable, and it should be resistant to attacks and perturbations.
+  - **How to reproduce :** The main experiments of the paper can be reproduced by following the installation instruction in the repository README and running the adequate scripts in the script directory.
+  - **How to extend :** Implement new attacking strategies to hinder watermark verifiability. Attacking strategies require to modify the text (e.g., paraphrasing) without changing its utility. **(Bonus)** If an effective attack has been found. A new strategy to mitigate this attack can be developed.
     
 ## Topic 2 : Agentic Systems
 
@@ -90,18 +101,6 @@
 
 
 
--- **Supervisor** Roberto
-- **Paper ** XXXXX
-
-  - 👨‍🏫: ⭐
-  - 🖥️: ⭐⭐⭐
-  
-  - **Link :** 
-  - **Brief description :** 
-  - **How to reproduce :**
-  - **How to extend :** 
-
-
 
 ## Topic : Structured Data Generation
 - **Supervisor** Aditya
@@ -115,18 +114,32 @@
   - **How to reproduce :** Please follow the code repository of the paper: https://github.com/adis98/WaveStitch
   - **How to extend :** While The original paper focuses on time series generation, it would be interesting to see how well the concept of "stitching" generalises to generating other sequential data, specifically, languages. The goal would be to first understand and reproduce the original time series version, then experiment with language diffusion models, including masked diffusion, multinomial, or pure continuous architectures and adapt the stitching mechanism to these scenarios.
 
--- **Supervisor** Jeroen
-- **General description :** 
-- **Paper ** XXXXX
+– **Supervisor :** Jeroen
 
+* General description : This work aims to identify the ability to safeguard LLMs
+during inference, using explainability methods. Herein, focusing on a lightweight sol
+ution proposed by Virginia Smith's group.
+* **Paper :** SAEs Can Improve Unlearning.
   - 👨‍🏫: ⭐
   - 🖥️: ⭐⭐⭐
-  
-  - **Link :** 
-  - **Brief description :** 
-  - **How to reproduce :**
-  - **How to extend :** 
 
+- **Link :** ArXiv: https://arxiv.org/abs/2504.08192
+- Source: https://github.com/aashiqmuhamed/DynamicSAEGuardrails
+- Additional code can be provided that contains basic fixes to run the code.
+  - **Brief description :**
+This paper investigates whether sparse autoencoder (SAE) features permit targeted unlearning in language models. It introduces Dynamic SAE Guardrails (DSG), which identify SAE features associated with the forget set and dynamically intervene on them when relevant inputs are detected. The method aims to reduce access to the target knowledge while limiting effects on unrelated capabilities.
+  - **How to reproduce :**
+Choose one or more open-source models with available SAE, and apply the work o
+n one of the benchmarks used in the paper, or use another available benchmark. Herein,
+focusing on Table 1 and Figure 4. Showing that you can perform knowledge editing on
+seperate, or multiple unlearning tasks.
+  - **How to extend :**
+      - Transferability of SAE features: Test whether SAE features selected for one forget set transfer to other prompts or datasets.
+      - Massive edits: Extend the method from a small number of target concepts to a large number of simultaneous edits. Extending the few-shot (1 – 4) with low (100) to massive (1000+) edits.
+      - Application to MDLMs: Apply the SAE-based unlearning method to masked diffusion language models (MDLMs). When targeting this extension, identify an MDLM with an available SAE/encoder, either for an annealed (AR -> MDM) or for an MDLM from scratch.
+      - Transferability of features: Apply SAEs from (base) models on fine-tuned models, or chat model SAEs on obliterated models. Herein, we study the capability of the method to
+resist model editing outside the scope of the original paper.
+      - SAE quality impact: Herein, we study the impact of the used SAE/encoder method. For example, taking community SAE models to evaluate the ability to steer models in varying settings.
 
 
 
