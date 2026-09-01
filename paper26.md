@@ -36,16 +36,25 @@
  
  
 - **Supervisor** Abel
-- **Paper ** Guard
+- **Paper** Token-Efficient Change Detection in LLM APIs
 
   - 👨‍🏫: ⭐
-  - 🖥️: ⭐⭐⭐
-  
-  - **Link :** 
-  - **Brief description :** 
-  - **How to reproduce :**
-  - **How to extend :** 
+  - 🖥️: ⭐⭐
 
+  - **Link:**
+  [Paper](https://openreview.net/pdf?id=7cMlZZYZT0)
+  - **Brief description:**
+    The black-box nature of LLM APIs, where users do not have access to the model weights or even output probabilities, poses a considerable problem for trustworthy AI systems. A provider may update a model's weights, serving configuration, or safety behavior without downstream users being able to directly verify that the system they previously evaluated is still the same. The highlighted paper introduces Black-Box Border Input Tracking (B3IT), a low-cost method for detecting such changes only through sampling output tokens. The key idea is to search for border inputs: short prompts for which two or more token values have very close output probabilities; even relatively small changes to the model can noticeably alter their output distribution. B3IT first discovers and calibrates a small set of such inputs, then periodically resamples them and detects changes by shifts in their output distributions.
+  - **How to reproduce:**
+    As a preliminary check, run the demo provided in the B3IT repository, which replays a real model-change event from recorded API observations and reproduces the complete detection pipeline. Then, reproduce the main parts of the in vitro results. Specifically, recreate a scaled-down version of Figures 1-3 for a subset of the 9 models and most TinyChange perturbation types covered by the original paper. Only part of the baselines in Figures 2-3 may be considered in addition to the proposed method.
+  - **How to extend:**
+
+    (i) Study how well B3IT can detect changes that specifically affect safety and reliability rather than merely arbitrary changes to the model. For example, create controlled model variants that differ through a changed system or safety prompt, a small safety fine-tune, or a LoRA adapter.
+
+    (ii) Investigate B3IT's effectiveness for implementation changes meant to optimize serving or reduce cost. Potential aspects to consider include changes to the tokenizer or decoding configuration, inference engine, and routing (in an endpoint that does not always serve a single model, but a set of models based on some criteria).
+
+    (iii) Try to improve B3IT's capabilities by actively searching for better border inputs instead of brute-force probing, optimizing for border inputs that provide reliable signals across many perturbation types, or dynamically decreasing the number of observations for sample detection to reduce cost.
+    
 ## Topic 2 : Agentic Systems
 
 - **Supervisor** Giulio
@@ -65,16 +74,20 @@
   * **How to extend:** Separated-planning defenses against prompt injection, tool or skill poisoning, and malicious MCP servers incur additional inference overhead. This overhead may itself be amplified by attacks such as the one proposed in [this paper](https://arxiv.org/pdf/2602.14798). As an extension, you should implement a small set of overthinking-inducing tools and evaluate whether Tool-Guard identifies them as suspicious or misaligned. If time permits, an extension of Tool-Guard that mitigates overthinking-inducing tools can also be explored.
 
 
--- **Supervisor** Zhiwen
-- **Paper ** XXXXX
+- **Supervisor:** Zhi Wen 
+- **Paper:** Active Layer-Contrastive Decoding Reduces Hallucination in Large Language Model Generation
 
   - 👨‍🏫: ⭐
-  - 🖥️: ⭐⭐⭐
-  
-  - **Link :** 
-  - **Brief description :** 
-  - **How to reproduce :**
-  - **How to extend :** 
+  - 🖥️: ⭐⭐⭐⭐
+
+  - **Link:** [Paper](https://aclanthology.org/2025.emnlp-main.150.pdf) | [GitHub](https://github.com/actlcd/ActLCD)
+
+  - **Brief description:** The paper proposes ActLCD, which learns when to activate layer-contrastive decoding during text generation. A policy trained with offline reinforcement learning chooses between standard decoding and contrasting predictions from shallow and deep transformer layers. This selective intervention aims to reduce hallucination while avoiding unnecessary adjustments.
+
+  - **How to reproduce:** Reproduce the experiments in Table 1 on TruthfulQA, LongFact, StrategyQA, and GSM8K using at least three models from the paper. Compare greedy decoding, DoLa, and ActLCD using the paper's evaluation protocol. GPU access is required, and quantized models are allowed. Report the quantization settings and keep them consistent across methods.
+
+  - **How to extend:** Adapt ActLCD to large audio-language models (LALMs), choosing at least two models for evaluation. **Bonus credit:** Modify or extend the decoding strategy, or propose a new one, and show a further reduction in hallucination compared with the adapted ActLCD baseline under the same evaluation protocol.
+
 
 
 -- **Supervisor** Roberto
