@@ -23,16 +23,21 @@
 
   
 
-- **Supervisor** Summer
-- **Paper** Steerable Visual Representations — Trustworthy Visual Steering
+* **Supervisor** Summer
+* **Paper** HulluEdit — Practical and Reliable Hallucination Mitigation for Vision-Language Models
 
-  - 👨‍🏫: ⭐
-  - 🖥️: ⭐⭐⭐
-  
-  - **Link** : [SteerViT Project Page](https://jonaruthardt.github.io/project/SteerViT/)
-  - **Brief description :** This paper introduces SteerViT, which injects text into a frozen vision foundation model through lightweight cross-attention modules. The resulting visual representations can focus on text-specified objects while largely preserving the general-purpose representation quality of the original vision encoder.
-  - **How to reproduce :** Use the released checkpoint to reproduce the main object-steering experiments and visualizations. Students can also train a lightweight version on a subset of RefCOCO or RefCOCOg with a frozen DINOv2 backbone.
-  - **How to extend :** There are three promising directions. First, improve the steering mechanism itself by making it evidence-aware, so that the model can reduce or reject steering when the text describes an absent, incorrect, or ambiguous object. Second, apply text-steered DINO features to dino-based video generation settings (E.g.: [CAGE](https://arxiv.org/abs/2403.14368)) for controllable video generation, allowing users to select an object with language and control its motion while preserving other objects and the background. Third, extend the method to medical images or other domains, where clinical text can steer the model toward relevant abnormalities, while an uncertainty or abstention mechanism prevents unsupported prompts from creating false visual evidence. Self-proposed extensions are also appreciated.
+  * 👨‍🏫: ⭐
+
+  * 🖥️: ⭐⭐⭐
+
+  * **Link** : [Paper](https://arxiv.org/abs/2602.22727) | [Official Code](https://github.com/VioAgnes/HulluEdit)
+
+  * **Brief description :** Large vision-language models may confidently describe objects, attributes, counts, or relations that are not supported by the input image. Such hallucinations are dangerous in applications including medical image reporting, autonomous agents, document and chart understanding, and visual assistance. HulluEdit provides a practical solution by separating visual evidence from potentially conflicting language priors inside the model and applying a lightweight, training-free intervention during generation. It requires only a single inference pass and can be evaluated on one consumer GPU.
+
+  * **How to reproduce :** Use the official implementation and LLaVA-1.5-7B to reproduce the main results on POPE and CHAIR. Students should also examine fine-grained capability metrics, particularly object recall and the counting performance reported on MME, to understand the trade-off between reducing hallucinations and preserving useful information.
+
+  * **How to extend :** Each student should select one of three independent directions. First, develop a **risk-aware temporal intervention** that uses recent decoding history to distinguish temporary fluctuations from persistent hallucination risk, answering *when the model should be edited*. Second, develop a **streaming visual-evidence tracker** that updates the previous evidence representation instead of recomputing it independently at every token, aiming for more stable and efficient inference. Third, develop **capability-preserving selective editing** by identifying useful information in the residual representation—such as counting, text, or spatial relations—and preserving it while suppressing unreliable components. This direction asks *what should actually be removed* and targets a better reliability–utility trade-off. Self-proposed practical extensions are also welcome.
+
  
  
 - **Supervisor** Abel
