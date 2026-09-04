@@ -141,5 +141,25 @@ seperate, or multiple unlearning tasks.
 resist model editing outside the scope of the original paper.
       - SAE quality impact: Herein, we study the impact of the used SAE/encoder method. For example, taking community SAE models to evaluate the ability to steer models in varying settings.
 
+- Basile
+  - 👨‍🏫: ⭐⭐
+  - 🖥️: ⭐⭐
+
+  - Link: [NeMoS: Nearest Neighbors Bandit meets Active Learning for Online Model Selection](https://openreview.net/forum?id=CSjewjplO1)
+
+  - Description:
+
+	This subject addresses the problem of model selection under budget constraints, which has received a lot of traction lately. The original article is a bandit framework that couples nearest neighbor reward estimation with an active learning strategy. This system operates in the prompt embedding space and estimates the reward of incoming prompts based on feedback from their nearest neighbors. The active learning component helps accelerating convergence by querying ground-truth value when deemed necessary.
+
+  - How to reproduce:
+
+    Students should reproduce the proposed algorithm, focusing on the simpler datasets. The algorithm should run locally on publicly available models, using the smallest ones. The existing codebase should enable easy implementation.
+
+  - How to extend:
+
+    The students should consider one or several of the following extension path :
+      - Considering other modalities for the selected models, notably text. This requires using other models as well as considering new metrics for evaluation.
+      - Taking into account the different costs of the models. For now, the algorithm only optimizes along one direction (output quality), further work could study how to obtain the most cost-efficient model usage.
+	  - Developing compatibility for multi-turn conversations. Most routing mechanisms focus on finding the best model for a specific prompt, which does not account for the real life use-case where several prompts can be used one after the other.
 
 
