@@ -83,11 +83,11 @@ Week 2 (09/22)| Trustworthy GAI II | Lydia & Supervisors| **Mandatory Presence**
 Week 3 (09/29)| Trustworthy GAI III | Lydia & Supervisors|**Mandatory Presence** 
 Week 4 (10/06)| Self study| | * Meeting supervisor - defining the projects
 Week 5 (10/13)| Self study| 
-Week 6 (10/29)| Self study| |Meeting supervisor - reproducing results| 
+Week 6 (10/20)| Self study| |Meeting supervisor - reproducing results| 
 Week 7 (10/27)| Self study |
-Week 8 (11/03| Self study| | Meeting supervisor - extending paper
+Week 8 (11/03)| Self study| | Meeting supervisor - extending paper
 Week 9 (11/10)| Self study | 
 Week 10 (11/17)|Self study| | Meeting supervisor - final check| 
-Week 11 (11/24)|  Project presentation|Student groups| **Mandatory Presence**
-Week 12 (12/01)|  Project presentation|Student groups| **Mandatory Presence**
+Week 11 (11/24)| Project presentation|Student groups| **Mandatory Presence**
+Week 12 (12/01)| Project presentation|Student groups| **Mandatory Presence**
 Week 13 (12/08)| Project presentation|Student groups |**Mandatory Presence**
